@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Epilogue", sans-serif;
+  font-size: 62.5%;
+}
+
+:root {
+  --Almost-White: hsl(0, 0%, 98%);
+  --Medium-Gray: hsl(0, 0%, 41%);
+  --Almost-Black: hsl(0, 0%, 8%);
+}
+
+body {
+  font-size: 1.8rem;
+  min-height: 100vh;
+  color: var(--Medium-Gray);
+  min-width: 375px;
+  text-align: center;
+  line-height: 1.6;
+  overflow: auto;
+}
+
+h2 {
+  color: var(--Almost-Black);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+/* Global styles */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+/* Header  */
+header {
+  min-height: 10vh;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 2rem 3rem;
+  gap: 5rem;
+}
+
+nav a {
+  color: var(--Medium-Gray);
+}
+
+nav a:hover {
+  color: var(--Almost-Black);
+}
+
+nav div {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  gap: 3rem;
+}
+
+nav .cta li:last-of-type a {
+  border: 1px solid var(--Almost-Black);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+nav .cta li:last-of-type a:hover {
+  background-color: hsl(0, 80%, 86%);
+  box-shadow: 2px 10px 30px 0 hsl(0, 36%, 70%, 0.5);
+}
+
+/* Nav mobile  */
+.mobile-nav-toggle {
+  background-image: url("./images/icon-menu.svg");
+  background-repeat: no-repeat;
+}
+
+/* Mobile nav style  */
+@media screen and (max-width: 900px) {
+  header {
+    z-index: 9999;
+  }
+
+  .primary-navigation {
+    position: fixed;
+    inset: 0 0 0 50%;
+    background: var(--Almost-White);
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 10% 5%;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url("./images/icon-close-menu.svg");
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  .mobile-nav-toggle {
+    background-image: url("./images/icon-menu.svg");
+    background-repeat: no-repeat;
+    width: 3rem;
+    aspect-ratio: 1;
+    background-color: transparent;
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    z-index: 9999;
+  }
+}
+
+/* Main  */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr 1fr;
+  min-height: 80vh;
+  gap: 5rem;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+/* Hero  */
+.hero-visual {
+  background-image: url("./images/image-hero-mobile.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  order: -1;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  gap: 3rem;
+  padding-top: 5rem;
+  padding-inline: 2rem;
+}
+
+.hero-content form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+}
+
+.clients {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Form inputs  */
+
+input,
+textarea,
+button[type="submit"] {
+  border: 1px dotted hsl(0, 36%, 70%);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: transparent;
+  color: inherit;
+  outline: none;
+  font-size: inherit;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  font-family: inherit;
+}
+
+input:focus,
+button[type="submit"]:focus {
+  border: 1px solid pink;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: rgb(250, 215, 221);
+  border: 1px solid pink;
+}
+
+select {
+  background: transparent;
+  padding: 1rem 3rem;
+  border: 1px dotted hsl(0, 36%, 70%);
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+/* Footer  */
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background: rgb(235, 234, 234);
+  position: fixed;
+  bottom: 0;
+}
+
+/* desktop  */
+
+@media screen and (min-width: 900px) {
+  .mobile-nav-toggle {
+    display: none;
+  }
+
+  main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding-inline: 5vw;
+    text-align: left;
+  }
+
+  /* Hero  */
+  .hero-visual {
+    background-image: url("./images/image-hero-desktop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    order: initial;
+  }
+}
